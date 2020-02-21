@@ -1,0 +1,64 @@
+input[type=text],
+select {
+  width: 10%;
+  padding: 12px 20px;
+  margin: 2px 2px 2px 2px;
+  border: 2px solid #002d64;
+  border-radius: 4px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background-color: #edf5e2;
+}
+
+label {
+  float: left;
+  width: 10em;
+  margin-right: 1em;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 10px 10px;
+  width: 100%;
+  float: left;
+}
+
+.periodsLabel {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.periods {
+  display: inline-block;
+  margin: 20px 2px 2px 5px;
+}
+
+h1 {
+  text-align: center;
+  border-radius: 10px;
+  margin: 0px 0px 0px 10px;
+  position: position;
+  background-color: #002d64;
+  color: white;
+}
+
+button {
+  font-size: 16px;
+  padding: 12px 28px;
+  border-radius: 4px;
+  -webkit-transition-duration: 0.4s;
+          transition-duration: 0.4s;
+  background-color: #002d64;
+  color: #d59f00;
+}
+
+button:hover {
+  background-color: #d59f00;
+  color: #002d64;
+}
+
+.highlight {
+  color: #d59f00;
+}
+/*# sourceMappingURL=main.css.map */

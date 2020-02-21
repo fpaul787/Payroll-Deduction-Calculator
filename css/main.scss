@@ -1,0 +1,64 @@
+$bodyColor: blue;
+$pantherTechColor: #002d64;
+$highLightColor: #d59f00;
+
+input[type=text],
+select {
+	width: 10%;
+	padding: 12px 20px;
+	margin: 2px 2px 2px 2px;
+
+	border: 2px solid $pantherTechColor;
+	border-radius: 4px;
+	box-sizing: border-box;
+	background-color: #edf5e2;
+}
+
+label {
+	float: left;
+	width: 10em;
+	margin-right: 1em;
+}
+
+.container {
+	border-radius: 5px;
+	background-color: #f2f2f2;
+	padding: 10px 10px;
+	// margin: 5px 20px;
+	width: 100%;
+	float: left;
+}
+.periodsLabel {
+	display: inline-block;
+	vertical-align: top;
+}
+.periods {
+	display: inline-block;
+	margin: 20px 2px 2px 5px;
+}
+h1 {
+	text-align: center;
+	border-radius: 10px;
+	margin: 0px 0px 0px 10px;
+	position: position;
+	background-color: $pantherTechColor;
+	color: white;
+}
+
+button {
+	font-size: 16px;
+	padding: 12px 28px;
+	border-radius: 4px;
+	transition-duration: 0.4s;
+	background-color: $pantherTechColor;
+	color: $highLightColor;
+}
+
+button:hover {
+	background-color: $highLightColor;
+	color: $pantherTechColor;
+}
+
+.highlight {
+	color: $highLightColor;
+}
