@@ -15,44 +15,40 @@
     </h1>
     <div class="container">
 
-        <label for="totalAmount">Amount:</label>
-        <input type="text" id="totalAmount" name="totalAmount">
+        <label for="totalAmount">Total:</label>
+        <input type="text" id="totalID" name="total" placeholder="0">
         <button id="calculatePDButton">Calculate</button><br><br>
 
         <label for="downPayment">Down Payment:</label>
-        <input type="text" id="downPayment" name="downPayment">
+        <input type="text" id="downPaymentID" name="downPayment" placeholder="0">
         <button id="calculatePDButton_CustomDP">Calculate</button><br><br>
 
         <label for="remaining">Remaining:</label>
-        <input type="text" id="remaining" name="remaining"><br><br>
+        <input type="text" id="remainingID" name="remaining" placeholder="0"><br><br>
 
         <p class="periodsLabel">Please select the Periods:</p>
         <div class="periods">
 
-            <label for="twelve"> <input type="radio" name="period" value="male">12</label>
+            <label for="twelve"> <input type="radio" name="period" value="twelve" id="twelveRadioButtonID">12</label>
 
 
-            <label for="sixteen"> <input type="radio" name="period" value="female">16</label>
+            <label for="sixteen"> <input type="radio" name="period" value="sixteen" id="sixteenRadioButtonID">16</label>
 
 
-            <label for="twenty"><input type="radio" name="period" value="other">20</label><br>
+            <label for="twenty"><input type="radio" name="period" value="twenty" id="twentyRadioButtonID">20</label><br>
         </div>
         <br><br>
 
 
 
         <label for="paymentPerPeriod">Payment Per Period:</label>
-        <input type="text" id="paymentPerPeriod" name="paymentPerPeriod">
+        <input type="text" id="paymentPerPeriodID" name="paymentPerPeriod" placeholder="0">
         <button id="calculatePDButton_CustomRemaining">Calculate</button><br><br>
 
 
 
 
     </div>
-
-
-
-
 
 
     <script src="js/main.js"></script>
