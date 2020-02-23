@@ -13,7 +13,6 @@ var remainingAmt
 var paymentPerPeriodAmt
 
 
-
 function init() {
 
     // ***listen to button click events  ** //
@@ -119,5 +118,19 @@ function calculate(totalAmtParam, downPaymentAmtParam = 0) {
     downPaymentAmt = downPaymentAmtParam
     totalAmt = totalAmtParam
     
+}
+
+function showData(downPayment, remainingAmount, paymentPerPeriod) {
+
+    //console.log("Down Payment: " + downPayment)
+    document.getElementById("downPaymentID").value = downPayment
+
+    //console.log("Remaining Amount: " + remainingAmount)
+    document.getElementById("remainingID").value = remainingAmount
+
+    //console.log("Payment per Period: " + paymentPerPeriod)
+    document.getElementById("paymentPerPeriodID").value = paymentPerPeriod
+
+
 }
 
