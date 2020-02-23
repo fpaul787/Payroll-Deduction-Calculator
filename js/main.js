@@ -134,3 +134,5 @@ function showData(downPayment, remainingAmount, paymentPerPeriod) {
 
 }
 
+// add validation
+

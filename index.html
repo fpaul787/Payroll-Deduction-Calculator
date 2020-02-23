@@ -16,15 +16,15 @@
     <div class="container">
 
         <label for="totalAmount">Total:</label>
-        <input type="text" id="totalID" name="total" placeholder="0">
+        <input type="number" id="totalID" name="total" placeholder="0" onkeypress="return onlyNumberKey(event)">
         <button id="calculatePDButton">Calculate</button><br><br>
 
         <label for="downPayment">Down Payment:</label>
-        <input type="text" id="downPaymentID" name="downPayment" placeholder="0">
+        <input type="number" id="downPaymentID" name="downPayment" placeholder="0">
         <button id="calculatePDButton_CustomDP">Calculate</button><br><br>
 
         <label for="remaining">Remaining:</label>
-        <input type="text" id="remainingID" name="remaining" placeholder="0"><br><br>
+        <input type="number" id="remainingID" name="remaining" placeholder="0"><br><br>
 
         <p class="periodsLabel">Please select the Periods:</p>
         <div class="periods">
@@ -42,7 +42,7 @@
 
 
         <label for="paymentPerPeriod">Payment Per Period:</label>
-        <input type="text" id="paymentPerPeriodID" name="paymentPerPeriod" placeholder="0">
+        <input type="number" id="paymentPerPeriodID" name="paymentPerPeriod" placeholder="0">
         <button id="calculatePDButton_CustomRemaining">Calculate</button><br><br>
 
 
@@ -50,8 +50,26 @@
 
     </div>
 
+    <script>
+        //Taken from geekforgeeks
+        //https://www.geeksforgeeks.org/how-to-force-input-field-to-enter-numbers-only-using-javascript/
+        function onlyNumberKey(evt) {
 
+            // Only ASCII charactar in that range allowed 
+
+            // both event.code and event.key return the 
+            // key that was pressed. However some browsers 
+            // might not support event.which
+            var ASCIICode = (evt.code) ? evt.which : evt.key
+
+            // 46 is ASCII for decimal
+            if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57) && ASCIICode != 46)
+                return false;
+            return true;
+        } 
+    </script>
     <script src="js/main.js"></script>
+
 </body>
 
 
