@@ -51,6 +51,11 @@ h1 {
 	color: white;
 }
 
+h2 {
+	color: $pantherTechColor;
+	text-align: center;
+}
+
 button {
 	font-size: 16px;
 	padding: 12px 28px;
@@ -87,23 +92,21 @@ button:hover {
 		font-size: 1.25rem;
 	}
 
-	button{
+	button {
 		background-color: $highLightColor;
 		color: $pantherTechColor;
 		width: 140px;
 	}
 
-	.periods{
-		
+	.periods {
 		width: 320px;
 		height: 60px;
 	}
-
 }
 
 // change color for desktop
-@media (min-width: 600px){
-	body{
-		background-color:$highLightColor;
+@media (min-width: 600px) {
+	body {
+		background-color: $highLightColor;
 	}
 }
