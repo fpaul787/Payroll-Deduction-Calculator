@@ -22,13 +22,16 @@
         <p class="periodsLabel">Please select the Periods:</p>
         <div id="periodsID" class="periods">
 
-            <label for="twelve"> <input type="radio" name="period" value="twelve" id="twelveRadioButtonID">12</label>
+            <label for="twelve" id="labelID"> <input type="radio" name="period" value="twelve"
+                    id="twelveRadioButtonID">12</label>
 
 
-            <label for="sixteen"> <input type="radio" name="period" value="sixteen" id="sixteenRadioButtonID">16</label>
+            <label for="sixteen" id="labelID"> <input type="radio" name="period" value="sixteen"
+                    id="sixteenRadioButtonID">16</label>
 
 
-            <label for="twenty"><input type="radio" name="period" value="twenty" id="twentyRadioButtonID">20</label><br>
+            <label for="twenty" id="labelID"><input type="radio" name="period" value="twenty"
+                    id="twentyRadioButtonID">20</label><br>
         </div>
         <br><br>
 
@@ -50,13 +53,14 @@
             onkeypress="return onlyNumberKey(event)">
         <button id="calculatePDButton_CustomRemaining">Calculate</button><br><br>
 
+        <textarea id="textareaID" rows="4" cols="50" readonly>
+            Make some calculations
+        </textarea><br>
 
 
 
     </div>
-    <div id="instructions">
-        <h2>Instructions</h2>
-    </div>
+
 
     <script>
         //Taken from geekforgeeks

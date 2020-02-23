@@ -137,6 +137,9 @@ function showData(downPayment, remainingAmount, paymentPerPeriod) {
     //console.log("Payment per Period: " + paymentPerPeriod)
     document.getElementById("paymentPerPeriodID").value = paymentPerPeriod
 
+    // Show data in text area
+    textareaString = `Total: $${totalAmt} \nDown Payment: $${downPayment} \nRemaining: $${remainingAmount} \nPayment Per ${numberOfPayments} Periods: $${paymentPerPeriod}`
+    document.getElementById('textareaID').value = textareaString
 
 }
 

@@ -34,7 +34,11 @@ label {
 }
 .periods {
 	display: inline-block;
-	margin: 20px 2px 2px 5px;
+	margin: 20px 2px 2px 2px;
+
+	label {
+		width: 5em;
+	}
 }
 
 .periodsDANGER {
@@ -99,7 +103,7 @@ button:hover {
 	}
 
 	.periods {
-		width: 320px;
+		width: 300px;
 		height: 60px;
 	}
 }
