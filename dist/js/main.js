@@ -89,8 +89,7 @@ function getPeriods(){
         
     } else {
         document.getElementById("periodsID").className = "periodsDANGER"
-        alert("Please select number of periods")
-        
+        alert("Please select number of periods")     
         
         throw new Error()
     }    

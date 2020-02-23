@@ -35,10 +35,9 @@ label {
 .periods {
 	display: inline-block;
 	margin: 20px 2px 2px 5px;
-	
 }
 
-.periodsDANGER{
+.periodsDANGER {
 	display: inline-block;
 	margin: 20px 2px 2px 5px;
 	background-color: red;
@@ -68,4 +67,41 @@ button:hover {
 
 .highlight {
 	color: $highLightColor;
+}
+
+@media (max-width: 600px) {
+	input[type=number],
+	select {
+		width: 50%;
+		padding: 12px 20px;
+		margin: 2px 2px 2px 2px;
+
+		border: 2px solid $pantherTechColor;
+		background-color: $highLightColor;
+		border-radius: 4px;
+		box-sizing: border-box;
+		background-color: #edf5e2;
+	}
+	p {
+		font-size: 1.25rem;
+	}
+
+	button{
+		background-color: $highLightColor;
+		color: $pantherTechColor;
+		width: 140px;
+	}
+
+	.periods{
+		
+		width: 320px;
+		height: 60px;
+	}
+
+}
+
+@media (min-width: 600px){
+	body{
+		background-color:$highLightColor;
+	}
 }

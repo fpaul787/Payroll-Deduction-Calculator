@@ -67,4 +67,37 @@ button:hover {
 .highlight {
   color: #d59f00;
 }
+
+@media (max-width: 600px) {
+  input[type=number],
+  select {
+    width: 50%;
+    padding: 12px 20px;
+    margin: 2px 2px 2px 2px;
+    border: 2px solid #002d64;
+    background-color: #d59f00;
+    border-radius: 4px;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    background-color: #edf5e2;
+  }
+  p {
+    font-size: 1.25rem;
+  }
+  button {
+    background-color: #d59f00;
+    color: #002d64;
+    width: 140px;
+  }
+  .periods {
+    width: 320px;
+    height: 60px;
+  }
+}
+
+@media (min-width: 600px) {
+  body {
+    background-color: #d59f00;
+  }
+}
 /*# sourceMappingURL=main.css.map */
