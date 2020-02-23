@@ -17,19 +17,10 @@
 
         <label for="totalAmount">Total:</label>
         <input type="number" id="totalID" name="total" placeholder="0" onkeypress="return onlyNumberKey(event)">
-        <button id="calculatePDButton">Calculate</button><br><br>
-
-        <label for="downPayment">Down Payment:</label>
-        <input type="number" id="downPaymentID" name="downPayment" placeholder="0"
-            onkeypress="return onlyNumberKey(event)">
-        <button id="calculatePDButton_CustomDP">Calculate</button><br><br>
-
-        <label for="remaining">Remaining:</label>
-        <input type="number" id="remainingID" name="remaining" placeholder="0"
-            onkeypress="return onlyNumberKey(event)"><br><br>
+        <br><br>
 
         <p class="periodsLabel">Please select the Periods:</p>
-        <div class="periods">
+        <div id="periodsID" class="periods">
 
             <label for="twelve"> <input type="radio" name="period" value="twelve" id="twelveRadioButtonID">12</label>
 
@@ -40,6 +31,17 @@
             <label for="twenty"><input type="radio" name="period" value="twenty" id="twentyRadioButtonID">20</label><br>
         </div>
         <br><br>
+
+        <button id="calculatePDButton">Calculate</button><br><br>
+
+        <label for="downPayment">Down Payment:</label>
+        <input type="number" id="downPaymentID" name="downPayment" placeholder="0"
+            onkeypress="return onlyNumberKey(event)">
+        <button id="calculatePDButton_CustomDP">Calculate</button><br><br>
+
+        <label for="remaining">Remaining:</label>
+        <input type="number" id="remainingID" name="remaining" placeholder="0"
+            onkeypress="return onlyNumberKey(event)"><br><br>
 
 
 

@@ -73,18 +73,25 @@ function calculatePD_FromPPP(){
 }
 
 function getPeriods(){
+    
     // get payment periods
     if (document.getElementById("twelveRadioButtonID").checked) {
+        document.getElementById("periodsID").className = "periods"
         numberOfPayments = 12
         
     } else if (document.getElementById("sixteenRadioButtonID").checked) {
+        document.getElementById("periodsID").className = "periods"
         numberOfPayments = 16
         
     } else if (document.getElementById('twentyRadioButtonID').checked) {
+        document.getElementById("periodsID").className = "periods"
         numberOfPayments = 20
         
     } else {
+        document.getElementById("periodsID").className = "periodsDANGER"
         alert("Please select number of periods")
+        
+        
         throw new Error()
     }    
     }
@@ -134,5 +141,5 @@ function showData(downPayment, remainingAmount, paymentPerPeriod) {
 
 }
 
-// add validation
+
 
