@@ -16,26 +16,39 @@ var paymentPerPeriodAmt
 
 function init() {
 
-
-
     // ***listen to button click events  ** //
     document.getElementById("calculatePDButton").addEventListener("click", function (event) {
-        calculatePD_A(event)
+        calculatePD_FromTotal(event)
     })
 
     document.getElementById("calculatePDButton_CustomDP").addEventListener("click", function (event) {
-        calculatePD_CustomDP(event)
+        calculatePD_FromDP(event)
     })
 
     document.getElementById("calculatePDButton_CustomRemaining").addEventListener("click", function (event) {
-        calculatePD_C(event)
+        calculatePD_FromPPP(event)
     })
 
 
 
 }
 
-function calculatePD_CustomDP(){
+function calculatePD_FromTotal() {
+    // get total Amt
+    totalAmt = document.getElementById("totalID").value
+
+    // get periods from user
+    getPeriods()
+
+    // calculations from Total amount
+    calculate(totalAmt)
+    
+    // Show data
+    showData(downPaymentAmt, remainingAmt, paymentPerPeriodAmt)
+
+}
+
+function calculatePD_FromDP(){
     // get total Amt
     totalAmt = document.getElementById("totalID").value
 
@@ -48,87 +61,48 @@ function calculatePD_CustomDP(){
         return
     }
 
-    // get payment periods
-    if (document.getElementById("twelveRadioButtonID").checked) {
-        numberOfPayments = 12
-        
-    } else if (document.getElementById("sixteenRadioButtonID").checked) {
-        numberOfPayments = 16
-        
-    } else if (document.getElementById('twentyRadioButtonID').checked) {
-        numberOfPayments = 20
-        
-    } else {
-        alert("Please select number of periods")
-        return
-    }    
+    getPeriods()    
 
-    calculateFromDownPayment(downPaymentAmt)
+    calculate(totalAmt,downPaymentAmt)
+
     showData(downPaymentAmt, remainingAmt, paymentPerPeriodAmt)
 
 }
 
+function calculatePD_FromPPP(){
+    alert('Not implemented Yet')
+}
 
-function calculatePD_A() {
-    // get total Amt
-    totalAmt = document.getElementById("totalID").value
-
+function getPeriods(){
     // get payment periods
     if (document.getElementById("twelveRadioButtonID").checked) {
         numberOfPayments = 12
-        calculateFromAmount(totalAmt)
-        showData(downPaymentAmt, remainingAmt, paymentPerPeriodAmt)
+        
     } else if (document.getElementById("sixteenRadioButtonID").checked) {
         numberOfPayments = 16
-        calculateFromAmount(totalAmt)
-        showData(downPaymentAmt, remainingAmt, paymentPerPeriodAmt)
+        
     } else if (document.getElementById('twentyRadioButtonID').checked) {
         numberOfPayments = 20
-        calculateFromAmount(totalAmt)
-        showData(downPaymentAmt, remainingAmt, paymentPerPeriodAmt)
+        
     } else {
         alert("Please select number of periods")
+        throw new Error()
     }    
-}
+    }
 
-// could combine the following two functions into
-// one function
-function calculateFromDownPayment(downPaymentInput){
 
-    
-    
+function calculate(totalAmtParam, downPaymentAmtParam = 0) {
+
     /** Initial Calculation */
-    remainingAmt = totalAmt - downPaymentInput
-    
-    paymentPerPeriodAmt = remainingAmt / numberOfPayments
+
+    if(downPaymentAmtParam == 0){
+        downPaymentAmtParam = totalAmtParam * MINIMUM_PERCENTAGE
+    }        
 
     
-    /** Clean Calculation with even numbers */
-
-    // round payment per period down to nearest dollar
-    paymentPerPeriodAmt = Math.floor(paymentPerPeriodAmt)
-
-    // multiply by number of payments to get remaining
-    remainingAmt = paymentPerPeriodAmt * numberOfPayments
-
-    // substract total minus remaining to get down payment
-    downPaymentAmt = Math.round((totalAmt - remainingAmt) * 100) / 100
-
-    console.log("Total Amount: " + totalAmt)
-    console.log("Down Payment: " + downPaymentAmt)
-    console.log("Remaining: " + remainingAmt)
-    console.log("Payment Per Period: " + paymentPerPeriodAmt)
-
-}
-
-function calculateFromAmount(totalAmt) {
-    /** Initial Calculation */
-    downPaymentAmt = totalAmt * MINIMUM_PERCENTAGE
-
-    remainingAmt = totalAmt - downPaymentAmt
+    remainingAmt = totalAmtParam - downPaymentAmtParam
 
     paymentPerPeriodAmt = remainingAmt / numberOfPayments
-
 
     /** Clean Calculation with even numbers */
 
@@ -139,19 +113,11 @@ function calculateFromAmount(totalAmt) {
     remainingAmt = paymentPerPeriodAmt * numberOfPayments
 
     // substract total minus remaining to get down payment
-    downPaymentAmt = Math.round((totalAmt - remainingAmt) * 100) / 100
+    downPaymentAmtParam = Math.round((totalAmtParam - remainingAmt) * 100) / 100
+
+    // assign to global values
+    downPaymentAmt = downPaymentAmtParam
+    totalAmt = totalAmtParam
+    
 }
 
-function showData(downPayment, remainingAmount, paymentPerPeriod) {
-
-    //console.log("Down Payment: " + downPayment)
-    document.getElementById("downPaymentID").value = downPayment
-
-    //console.log("Remaining Amount: " + remainingAmount)
-    document.getElementById("remainingID").value = remainingAmount
-
-    //console.log("Payment per Period: " + paymentPerPeriod)
-    document.getElementById("paymentPerPeriodID").value = paymentPerPeriod
-
-
-}
