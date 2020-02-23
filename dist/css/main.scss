@@ -69,6 +69,7 @@ button:hover {
 	color: $highLightColor;
 }
 
+// make changes for mobile
 @media (max-width: 600px) {
 	input[type=number],
 	select {
@@ -100,6 +101,7 @@ button:hover {
 
 }
 
+// change color for desktop
 @media (min-width: 600px){
 	body{
 		background-color:$highLightColor;
