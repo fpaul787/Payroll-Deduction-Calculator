@@ -78,6 +78,20 @@ button:hover {
 	color: $highLightColor;
 }
 
+.instrucBOX {
+	border: thick;
+	// border-color: green;
+	border-style: solid;
+	width: 500px;
+	height: 250px;
+	color: $highLightColor;
+	background-color: $pantherTechColor;
+	margin-left: 25px;
+	h3 {
+		text-align: center;
+	}
+}
+
 // make changes for mobile
 @media (max-width: 700px) {
 	input[type=number],
