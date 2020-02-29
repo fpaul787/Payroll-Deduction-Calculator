@@ -83,17 +83,22 @@ button:hover {
 	// border-color: green;
 	border-style: solid;
 	width: 500px;
-	height: 250px;
+	height: 100%;
 	color: $highLightColor;
 	background-color: $pantherTechColor;
-	margin-left: 25px;
-	h3 {
+	margin-left: 10px;
+	h2 {
 		text-align: center;
 	}
 }
 
+#textareaID {
+	margin-left: 15px;
+	width: 500px;
+}
+
 // make changes for mobile
-@media (max-width: 700px) {
+@media (max-width: 600px) {
 	input[type=number],
 	select {
 		width: 50%;
@@ -119,6 +124,20 @@ button:hover {
 	.periods {
 		width: 300px;
 		height: 60px;
+	}
+
+	.instrucBOX {
+		h1 {
+			font-size: medium;
+		}
+		width: 75%;
+		height: 100%;
+		font-size: 1.00rem;
+	}
+
+	#textareaID {
+		width: 75%;
+		margin-left: 15px;
 	}
 }
 
