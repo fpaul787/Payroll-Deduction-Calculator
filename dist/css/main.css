@@ -40,7 +40,7 @@ label {
 
 .link {
   background-color: #002d64;
-  color: white;
+  color: beige;
   font-size: large;
 }
 
@@ -137,6 +137,7 @@ button:hover {
   }
   #textareaID {
     width: 75%;
+    height: 100px;
     margin-left: 15px;
   }
 }
