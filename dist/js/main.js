@@ -24,12 +24,6 @@ function init() {
         calculatePD_FromDP(event)
     })
 
-    document.getElementById("calculatePDButton_CustomRemaining").addEventListener("click", function (event) {
-        calculatePD_FromPPP(event)
-    })
-
-
-
 }
 
 function calculatePD_FromTotal() {
@@ -68,9 +62,6 @@ function calculatePD_FromDP(){
 
 }
 
-function calculatePD_FromPPP(){
-    alert('Not implemented Yet')
-}
 
 function getPeriods(){
     

@@ -27,12 +27,6 @@ function init() {
         calculatePD_FromDP(event)
     })
 
-    document.getElementById("calculatePDButton_CustomRemaining").addEventListener("click", function (event) {
-        calculatePD_FromPPP(event)
-    })
-
-
-
 }
 
 function calculatePD_FromTotal() {
@@ -58,6 +52,9 @@ function calculatePD_FromDP(){
     // get total Amt
     totalAmt = document.getElementById("totalID").value
 
+    // existing amt
+    existingAmt = document.getElementById("existingID").value
+
     downPaymentAmt = document.getElementById("downPaymentID").value
     if(downPaymentAmt == 0 ){
         alert("Please enter a down payment amount")
@@ -69,15 +66,13 @@ function calculatePD_FromDP(){
 
     getPeriods()    
 
-    calculate(totalAmt,downPaymentAmt)
+    calculate(totalAmt, existingAmt,downPaymentAmt)
 
-    showData(downPaymentAmt, remainingAmt, paymentPerPeriodAmt)
+    showData(downPaymentAmt, remainingAmt, remaining_PLUS_existingAmt, paymentPerPeriodAmt)
 
 }
 
-function calculatePD_FromPPP(){
-    alert('Not implemented Yet')
-}
+
 
 function getPeriods(){
     
@@ -153,7 +148,7 @@ function showData(downPayment, remainingAmount, remaining_existing ,paymentPerPe
     document.getElementById("paymentPerPeriodID").value = paymentPerPeriod
 
     // Show data in text area
-    textareaString = `Total: $${totalAmt} \nDown Payment: $${downPayment} \nRemaining: $${remainingAmount} \nPayment Per ${numberOfPayments} Periods: $${paymentPerPeriod}`
+    textareaString = `Total: $${totalAmt} \nDown Payment: $${downPayment} \nRemaining: $${remainingAmount} \nRemainging + Existing: $${remaining_existing} \nPayment Per ${numberOfPayments} Periods: $${paymentPerPeriod}`
     document.getElementById('textareaID').value = textareaString
 
 }
