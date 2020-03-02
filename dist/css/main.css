@@ -102,6 +102,10 @@ button:hover {
   width: 500px;
 }
 
+#copy {
+  margin-left: 15px;
+}
+
 @media (max-width: 600px) {
   input[type=number],
   select {

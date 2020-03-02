@@ -72,6 +72,7 @@
         <textarea id="textareaID" rows="4" cols="50" readonly>
             Make some calculations
         </textarea><br>
+        <button onclick="copyFunction()" id="copy">Copy</button>
 
         <!-- Instructions -->
         <div class="instrucBOX">
@@ -118,7 +119,17 @@
             if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57) && ASCIICode != 46)
                 return false;
             return true;
-        } 
+
+
+        }
+
+        // Copy function taken from w3schoolscom
+        function copyFunction() {
+            var copyText = document.getElementById("textareaID");
+            copyText.select();
+            copyText.setSelectionRange(0, 99999)
+            document.execCommand("copy");
+        }
     </script>
     <script src="js/existing.js"></script>
 
