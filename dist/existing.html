@@ -125,10 +125,13 @@
 
         // Copy function taken from w3schoolscom
         function copyFunction() {
+            // get text from element
             var copyText = document.getElementById("textareaID");
+
+            // select text field
             copyText.select();
-            copyText.setSelectionRange(0, 99999)
-            document.execCommand("copy");
+            copyText.setSelectionRange(0, 99999) // for mobile
+            document.execCommand("copy"); // copy the text inside the text
         }
     </script>
     <script src="js/existing.js"></script>
