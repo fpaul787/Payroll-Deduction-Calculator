@@ -148,7 +148,7 @@ function showData(downPayment, remainingAmount, remaining_existing ,paymentPerPe
     document.getElementById("paymentPerPeriodID").value = paymentPerPeriod
 
     // Show data in text area
-    textareaString = `Total: $${totalAmt} \nDown Payment: $${downPayment} \nRemaining: $${remainingAmount} \nRemainging + Existing: $${remaining_existing} \nPayment Per ${numberOfPayments} Periods: $${paymentPerPeriod}`
+    textareaString = `Total: $${totalAmt} \nDown Payment: $${downPayment} \nRemaining: $${remainingAmount} \nRemaining + Existing: $${remaining_existing} \nPayment Per ${numberOfPayments} Periods: $${paymentPerPeriod}`
     document.getElementById('textareaID').value = textareaString
 
 }
