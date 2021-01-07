@@ -150,7 +150,7 @@ export default function MainCalculator() {
     setDownPayment(event.target.value);
   };
 
-  const handleSubmitFromTotal = (event) => {
+  const handleSubmitFromTotal = () => {
     if (!validateNumber(enteredTotal)) {
       alert("Total must be greater equal to 0");
       return;
@@ -172,7 +172,7 @@ export default function MainCalculator() {
     );
   };
 
-  const handleSubmitFromDownPayment = (event) => {
+  const handleSubmitFromDownPayment = () => {
     if (!validateNumber(enteredTotal)) {
       alert("Total must be greater or equal to 0");
       return 
@@ -201,6 +201,16 @@ export default function MainCalculator() {
     `
     );
   };
+
+  const copyToClipboard = () => {
+    const el = document.createElement('textarea')
+    el.value = textAreaValue
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand("copy");
+    document.body.removeChild(el);
+
+  }
 
   return (
     <main className={classes.layout}>
@@ -352,7 +362,7 @@ export default function MainCalculator() {
             />
           </Grid>
           <Grid style={{ marginLeft: "10px" }} item xs={12} sm={8}>
-            <Button className={classes.copyButton} variant="contained">
+            <Button onClick={copyToClipboard} className={classes.copyButton} variant="contained">
               Copy
             </Button>
           </Grid>
