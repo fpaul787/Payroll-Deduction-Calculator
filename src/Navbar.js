@@ -5,7 +5,9 @@ import AppBar from "@material-ui/core/AppBar";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
-  root: {
+  root: {},
+  appBar: {
+    position: "relative",
     backgroundColor: "#002c63",
   },
 });
@@ -15,10 +17,10 @@ export default function Navbar() {
   const classes = useStyles();
   return (
     <AppBar
-      className={classes.root}
+      className={classes.appBar}
       position="absolute"
       color="default"
-      elevation="4"
+      elevation={4}
     >
       <Toolbar>
         <Typography variant="h6" color="inherit" noWrap={true}>
