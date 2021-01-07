@@ -1,23 +1,18 @@
-import logo from './logo.svg';
 import './App.css';
+import { ThemeProvider } from "@material-ui/styles";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import theme from "./theme";
+import Navbar from "./Navbar";
+import MainCalculator from './MainCalculator'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Navbar />
+        <MainCalculator/>
+      </ThemeProvider>
     </div>
   );
 }
