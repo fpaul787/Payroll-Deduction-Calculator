@@ -3,7 +3,9 @@ import { ThemeProvider } from "@material-ui/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import theme from "./theme";
 import Navbar from "./Navbar";
-import MainCalculator from './MainCalculator'
+import NewPayroll from './NewPayroll';
+import ExistingPayroll from './ExistingPayroll'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 function App() {
   return (
@@ -11,7 +13,14 @@ function App() {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Navbar />
-        <MainCalculator/>
+        <BrowserRouter>
+          <Switch>
+            <Route exact path="/">
+              <NewPayroll />
+            </Route>
+            <Route path="/existing"></Route>
+          </Switch>
+        </BrowserRouter>
       </ThemeProvider>
     </div>
   );

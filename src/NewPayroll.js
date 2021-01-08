@@ -11,7 +11,8 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 import Button from "@material-ui/core/Button";
-import calculate from "./calulate";
+import Checkbox from "@material-ui/core/Checkbox";
+import { calculate, existingCalculate } from "./calulate";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -121,13 +122,14 @@ const useStyles = makeStyles((theme) => ({
   checked: {},
 }));
 
-export default function MainCalculator() {
+export default function NewPayroll() {
   const classes = useStyles();
   const MINIMUM_PERCENTAGE = 0.1;
   const [enteredTotal, setEnteredTotal] = useState(0);
   const [periods, setPeriods] = useState(12);
   const [downPayment, setDownPayment] = useState(0);
-
+  const [existingAmt, setExisting] = useState(0);
+  const [checked, setChecked] = useState(false);
   const [textAreaValue, setTextAreaValue] = useState(
     `Please make some calculations`
   );
@@ -150,24 +152,48 @@ export default function MainCalculator() {
     setDownPayment(event.target.value);
   };
 
+  const handleExisting = (event) => {
+    setExisting(event.target.value);
+  };
+
   const handleSubmitFromTotal = () => {
     if (!validateNumber(enteredTotal)) {
-      alert("Total must be greater equal to 0");
+      alert("Total must be greater or equal to 0");
       return;
     }
 
-    var tempDownpayment = enteredTotal * MINIMUM_PERCENTAGE;
+    // if checked, existing payroll is being calculated
+    if (checked) {
+      var tempDownPayment = enteredTotal * MINIMUM_PERCENTAGE;
 
-    var { calculatedDownpayment, paymentPerPeriod, remainingAmt } = calculate(
-      enteredTotal,
-      tempDownpayment,
-      periods
-    );
-    
-    
-    setTextAreaValue(
-      `Total: $${enteredTotal}\nDown Payment: $${calculatedDownpayment}\nRemaining: $${remainingAmt}\nPayment Per ${periods} Periods: $${paymentPerPeriod}`
-    );
+      var {
+        calculatedDownPayment,
+        paymentPerPeriod,
+        remainingAmt,
+        remaining_existing,
+      } = existingCalculate(
+        enteredTotal,
+        tempDownPayment,
+        existingAmt,
+        periods
+      );
+
+      setTextAreaValue(
+        `Total: $${enteredTotal}\nDown Payment: $${calculatedDownPayment}\nRemaining: ${remainingAmt}\nRemaining + Existing: $${remaining_existing}\nPayment Per ${periods} Periods: $${paymentPerPeriod}`
+      );
+    } else {
+      var tempDownPayment = enteredTotal * MINIMUM_PERCENTAGE;
+
+      var { calculatedDownPayment, paymentPerPeriod, remainingAmt } = calculate(
+        enteredTotal,
+        tempDownPayment,
+        periods
+      );
+
+      setTextAreaValue(
+        `Total: $${enteredTotal}\nDown Payment: $${calculatedDownPayment}\nRemaining: $${remainingAmt}\nPayment Per ${periods} Periods: $${paymentPerPeriod}`
+      );
+    }
   };
 
   const handleSubmitFromDownPayment = () => {
@@ -186,15 +212,29 @@ export default function MainCalculator() {
       return;
     }
 
-    var { calculatedDownpayment, paymentPerPeriod, remainingAmt } = calculate(
-      enteredTotal,
-      downPayment,
-      periods
-    );
+    // existing amount
+    if (checked) {
+      var {
+        calculatedDownPayment,
+        paymentPerPeriod,
+        remainingAmt,
+        remaining_existing,
+      } = existingCalculate(enteredTotal, downPayment, existingAmt, periods);
 
-    setTextAreaValue(
-      `Total: $${enteredTotal}\nDown Payment: $${calculatedDownpayment}\nRemaining: $${remainingAmt}\nPayment Per ${periods} Periods: $${paymentPerPeriod}`
-    );
+      setTextAreaValue(
+        `Total: $${enteredTotal}\nDown Payment: $${calculatedDownPayment}\nRemaining: ${remainingAmt}\nRemaining + Existing: $${remaining_existing}\nPayment Per ${periods} Periods: $${paymentPerPeriod}`
+      );
+    } else {
+      var { calculatedDownPayment, paymentPerPeriod, remainingAmt } = calculate(
+        enteredTotal,
+        downPayment,
+        periods
+      );
+
+      setTextAreaValue(
+        `Total: $${enteredTotal}\nDown Payment: $${calculatedDownPayment}\nRemaining: $${remainingAmt}\nPayment Per ${periods} Periods: $${paymentPerPeriod}`
+      );
+    }
   };
 
   const copyToClipboard = () => {
@@ -218,7 +258,7 @@ export default function MainCalculator() {
           New Payroll Deduction
         </Typography>
         <Grid container spacing={3}>
-          <Grid item xs={12} sm={8}>
+          <Grid item xs={12}>
             <TextField
               id="total"
               variant="outlined"
@@ -247,7 +287,54 @@ export default function MainCalculator() {
                 },
               }}
             />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={checked}
+                  onChange={() => {
+                    setChecked(!checked);
+                  }}
+                  name="checkedA"
+                />
+              }
+              label="Existing Payroll"
+            />
           </Grid>
+          {checked ? (
+            <Grid item xs={12}>
+              <TextField
+                id="existing"
+                variant="outlined"
+                label="Existing"
+                type="number"
+                className={classes.textField}
+                onChange={handleExisting}
+                InputProps={{
+                  className: classes.input,
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <span className={classes.colorHighlight}>$</span>
+                    </InputAdornment>
+                  ),
+                  classes: {
+                    root: classes.cssOutlinedInput,
+                    focused: classes.cssFocused,
+                    notchedOutline: classes.notchedOutline,
+                  },
+                }}
+                InputLabelProps={{
+                  style: { color: "#d59f00" },
+                  classes: {
+                    root: classes.labelRoot,
+                    focused: classes.labelFocused,
+                  },
+                }}
+              />
+            </Grid>
+          ) : (
+            <div></div>
+          )}
+
           <Grid style={{ marginLeft: "10px" }} item xs={12} sm={8}>
             <FormControl component="fieldset" className={classes.form}>
               <FormLabel className={classes.colorHighlight} component="legend">
