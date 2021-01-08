@@ -158,59 +158,53 @@ export default function MainCalculator() {
 
     var tempDownpayment = enteredTotal * MINIMUM_PERCENTAGE;
 
-    var { calculatedDownpayment, paymentPerPeriod } = calculate(
+    var { calculatedDownpayment, paymentPerPeriod, remainingAmt } = calculate(
       enteredTotal,
       tempDownpayment,
       periods
     );
-
+    
+    
     setTextAreaValue(
-      `Total: $${enteredTotal}\nDown Payment: $${calculatedDownpayment}\nRemaining: $${
-        enteredTotal - calculatedDownpayment
-      }\nPayment Per ${periods} Periods: $${paymentPerPeriod}
-    `
+      `Total: $${enteredTotal}\nDown Payment: $${calculatedDownpayment}\nRemaining: $${remainingAmt}\nPayment Per ${periods} Periods: $${paymentPerPeriod}`
     );
   };
 
   const handleSubmitFromDownPayment = () => {
     if (!validateNumber(enteredTotal)) {
       alert("Total must be greater or equal to 0");
-      return 
+      return;
     }
 
-    if(!validateNumber(downPayment)){
+    if (!validateNumber(downPayment)) {
       alert("Down Payment must be greater equal to 0");
-      return; 
+      return;
     }
 
-    if(downPayment < enteredTotal * MINIMUM_PERCENTAGE){
+    if (downPayment < enteredTotal * MINIMUM_PERCENTAGE) {
       alert("Down Payment must be greater or equal to 10% of total");
-      return; 
+      return;
     }
 
-    var { calculatedDownpayment, paymentPerPeriod } = calculate(
+    var { calculatedDownpayment, paymentPerPeriod, remainingAmt } = calculate(
       enteredTotal,
       downPayment,
       periods
     );
 
     setTextAreaValue(
-      `Total: $${enteredTotal}\nDown Payment: $${calculatedDownpayment}\nRemaining: $${
-        enteredTotal - calculatedDownpayment
-      }\nPayment Per ${periods} Periods: $${paymentPerPeriod}
-    `
+      `Total: $${enteredTotal}\nDown Payment: $${calculatedDownpayment}\nRemaining: $${remainingAmt}\nPayment Per ${periods} Periods: $${paymentPerPeriod}`
     );
   };
 
   const copyToClipboard = () => {
-    const el = document.createElement('textarea')
-    el.value = textAreaValue
+    const el = document.createElement("textarea");
+    el.value = textAreaValue;
     document.body.appendChild(el);
     el.select();
     document.execCommand("copy");
     document.body.removeChild(el);
-
-  }
+  };
 
   return (
     <main className={classes.layout}>
@@ -362,7 +356,11 @@ export default function MainCalculator() {
             />
           </Grid>
           <Grid style={{ marginLeft: "10px" }} item xs={12} sm={8}>
-            <Button onClick={copyToClipboard} className={classes.copyButton} variant="contained">
+            <Button
+              onClick={copyToClipboard}
+              className={classes.copyButton}
+              variant="contained"
+            >
               Copy
             </Button>
           </Grid>

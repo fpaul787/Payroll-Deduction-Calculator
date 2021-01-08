@@ -19,5 +19,5 @@ export default function calculate(totalAmt, downPayment, numberOfPayments) {
   downPayment = Math.round((totalAmt - remainingAmt) * 100) / 100;
 
   var calculatedDownpayment = downPayment;
-  return { calculatedDownpayment, paymentPerPeriod };
+  return { calculatedDownpayment, paymentPerPeriod, remainingAmt };
 }
