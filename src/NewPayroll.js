@@ -58,7 +58,7 @@ export default function NewPayroll() {
     if (checked) {
       var tempDownPayment = enteredTotal * MINIMUM_PERCENTAGE;
 
-      var {
+      let {
         calculatedDownPayment,
         paymentPerPeriod,
         remainingAmt,
@@ -74,9 +74,9 @@ export default function NewPayroll() {
         `Total: $${enteredTotal}\nDown Payment: $${calculatedDownPayment}\nRemaining: ${remainingAmt}\nRemaining + Existing: $${remaining_existing}\nPayment Per ${periods} Periods: $${paymentPerPeriod}`
       );
     } else {
-      var tempDownPayment = enteredTotal * MINIMUM_PERCENTAGE;
+      tempDownPayment = enteredTotal * MINIMUM_PERCENTAGE;
 
-      var { calculatedDownPayment, paymentPerPeriod, remainingAmt } = calculate(
+      let { calculatedDownPayment, paymentPerPeriod, remainingAmt } = calculate(
         enteredTotal,
         tempDownPayment,
         periods
@@ -106,7 +106,7 @@ export default function NewPayroll() {
 
     // existing amount
     if (checked) {
-      var {
+      let {
         calculatedDownPayment,
         paymentPerPeriod,
         remainingAmt,
@@ -117,7 +117,7 @@ export default function NewPayroll() {
         `Total: $${enteredTotal}\nDown Payment: $${calculatedDownPayment}\nRemaining: ${remainingAmt}\nRemaining + Existing: $${remaining_existing}\nPayment Per ${periods} Periods: $${paymentPerPeriod}`
       );
     } else {
-      var { calculatedDownPayment, paymentPerPeriod, remainingAmt } = calculate(
+      let { calculatedDownPayment, paymentPerPeriod, remainingAmt } = calculate(
         enteredTotal,
         downPayment,
         periods
